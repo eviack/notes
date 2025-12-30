@@ -704,4 +704,115 @@ See it is just a heap dijkstra implementation from src to dest</p>
         return ans
 </code></pre>
 <h2 id="eulerian-path-problems">Eulerian path problems</h2>
+<p><strong>Pattern</strong> - <strong>Eulerian path (hierholzer’s algo) (Post-Order DFS)</strong></p>
+<ul>
+<li>Definition: A path in a graph that visits every edge exactly once.</li>
+<li>The Algorithm: <strong>Hierholzer’s Algorithm</strong> (or simply “Post-Order DFS”).</li>
+</ul>
+<p><strong>How to spot it:</strong></p>
+<ul>
+<li>“Use all tickets.”</li>
+<li>“Valid arrangement of pairs.”</li>
+<li>“Draw a shape without lifting your pen.”</li>
+<li>“Reconstruct a sequence from fragments.”</li>
+</ul>
+<h3 id="the-mental-block-this-pattern-is-about-visiting-edges.">The Mental Block: This pattern is about visiting Edges.</h3>
+<ul>
+<li>Standard DFS: Mark visited[node] = True.</li>
+<li>Eulerian DFS: Remove edge from graph (or mark visited[edge] = True).</li>
+</ul>
+<h3 id="hierholzers-algorithm">Hierholzer’s Algorithm</h3>
+<p>Imagine you are exploring a maze, but you have a rule: “Burn the bridges behind you.” Every time you cross an edge, you destroy it so you can never cross it again.</p>
+<p><strong>The problem is: What if you get stuck?</strong></p>
+<ul>
+<li>If you take a wrong turn, you might end up at a dead-end node while there are still unvisited edges back at the start.</li>
+</ul>
+<p><strong>Hierholzer’s Solution:</strong> “It’s okay to get stuck. When you get stuck, it means you have finished the end of the journey. Write that node down, then step back (backtrack) to see if you missed any turns earlier.”</p>
+<p><strong>The Setup (Prerequisites)</strong><br>
+Before running the algorithm, the graph must actually have an Eulerian Path.</p>
+<ul>
+<li><strong>Start Node</strong>: The node where <code>OutDegree - InDegree = 1</code> (Or any node if it’s a closed circuit).</li>
+<li><strong>End Node</strong>: The node where <code>InDegree - OutDegree = 1</code></li>
+<li><strong>Other all nodes</strong>:  <code>InDegree == OutDegree</code></li>
+</ul>
+<h3 id="algorithm">Algorithm:</h3>
+<p><strong>Step 1:</strong> Start DFS from the valid Start Node.<br>
+<strong>Step 2:</strong> From the current node U, pick any neighbor V.<br>
+<strong>Step 3 (Burn the Bridge):</strong>  Delete the edge U -&gt; V immediately so you don’t use it again.<br>
+<strong>Step 4:</strong> Move to V and repeat Step 2 recursively.<br>
+<strong>Step 5 (The Magic):</strong> If a node has no outgoing edges left (you are stuck):</p>
+<ul>
+<li>Add this node to your Result List.</li>
+<li>Return (Backtrack) to the previous node.</li>
+</ul>
+<p><strong>Step 6:</strong> Finally, Reverse the Result List to get the actual path.</p>
+<p>Code implementation:</p>
+<p>Build the graph first and calculate indegrees and outdegrees incase we wanna find out the start node if it is not given to us</p>
+<pre><code>def findEulerianPath(edges):
+    graph = defaultdict(list)
+    out_degree = defaultdict(int)
+    in_degree = defaultdict(int)
+    
+    for u, v in edges:
+        graph[u].append(v)
+        out_degree[u] += 1
+        in_degree[v] += 1
+</code></pre>
+<p>Finding the start node in the below snippet by checking if any node has <code>outdegree-indegree=1</code></p>
+<pre><code>    start_node = edges[0][0] # Default to first node
+    for node in out_degree:
+        # If out &gt; in by 1, it MUST be the start
+        if out_degree[node] - in_degree[node] == 1:
+            start_node = node
+            break
+</code></pre>
+<p>Then we have to build and store the eularian path:</p>
+<pre><code>    path = []
+
+    def dfs(u):
+        # While unused edges exist...
+        while graph[u]:
+            # Pop removes the edge (Burns the bridge)
+            v = graph[u].pop()
+            dfs(v)
+        
+        # Only add to path when STUCK (Post-Order)
+        path.append(u)
+
+    # 3. Execute
+    dfs(start_node)
+</code></pre>
+<p>At the end just reverse the path we built, and that would be our final answer</p>
+<pre><code>    # 4. Reverse to get correct order
+    return path[::-1]
+</code></pre>
+<h3 id="leetcode-322-reconstruct-itineary-solution-implemented-using-heirholzers-algo">Leetcode 322: Reconstruct Itineary Solution implemented using heirholzer’s algo</h3>
+<pre><code>class Solution:
+    def findItinerary(self, tickets: List[List[str]]) -&gt; List[str]:
+        res = []
+        tickets.sort()
+        graph = defaultdict(list)
+        for u,v in tickets:
+            graph[u].append(v)
+        def dfs(node):
+            while graph[node]:
+                neigh = graph[node].pop(0)
+                dfs(neigh)
+            res.append(node)
+        dfs("JFK")
+        return res[::-1]
+</code></pre>
+<h3 id="similar-eulerian-path-problems-ordering-edges">Similar eulerian path problems (Ordering Edges)</h3>
+<ul>
+<li>Concept: The exact pattern you just solved. Linking edges start-to-end.</li>
+</ul>
+<p>Practice:</p>
+<p><a href="https://leetcode.com/problems/valid-arrangement-of-pairs/">2097. Valid Arrangement of Pairs</a> (Hard)</p>
+<ul>
+<li>Note: This is almost identical to “Reconstruct Itinerary” but with numbers. It forces you to handle the “Start Node” logic explicitly (Start is where out_degree - in_degree == 1).</li>
+</ul>
+<p><a href="https://leetcode.com/problems/cracking-the-safe/">753. Cracking the Safe</a> (Hard)</p>
+<ul>
+<li>Note: This is a hidden Eulerian Path problem. You construct a De Bruijn sequence by finding a path that traverses every possible combination (edge).</li>
+</ul>
 
