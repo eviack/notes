@@ -416,8 +416,8 @@ for _ in range(n):
 </code></pre>
 <hr>
 <h2 id="problems-solved-and-some-good-solutions-to-read">Problems solved and some good solutions to read</h2>
-<p><strong>BRUTE FORCE for 1192. Critical Connections in a Network<br>
-For n&lt;1000</strong></p>
+<h3 id="brute-force-for-1192.-critical-connections-in-a-network">**BRUTE FORCE for 1192. Critical Connections in a Network</h3>
+<p>For n&lt;1000**</p>
 <blockquote>
 <p>NOT PASSED</p>
 </blockquote>
@@ -789,6 +789,70 @@ for i in range(n):
 <strong>Right:</strong> ID 2 (Size 8)</p>
 <p>If you blindly sum them (<code>1 + 8 + 8 + 8 + 8</code>), you get 33. <strong>WRONG.</strong> It’s all one island! You only connect to Island #2 <strong>once</strong>. The result should be <code>1 + 8 = 9</code>.<br>
 Thus our <code>mxarea</code> is the answer.</p>
+<h3 id="alternate-dsu-approach-a-lot-better-and-dynamic">Alternate DSU approach (A lot better and dynamic)</h3>
+<p>Time complexity : <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1.06411em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.814108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p>So we can just take union of all 1s and form island groups, and simply check the neighbours of all 0s, which neighbour belongs to which island by checking their ultimate parent. This way we can easily implement it.</p>
+<p>Since it is a matrix, we need a <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>D</mi><mover><mo stretchy="true" minsize="3.0em">undefined</mo><mpadded width="+0.6em" lspace="0.3em"><mrow></mrow></mpadded></mover><mn>1</mn><mi>D</mi></mrow><annotation encoding="application/x-tex">2D \xrightarrow{} 1D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69433em; vertical-align: -0.011em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right: 0.02778em;">D</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.622em;"><span class="" style="top: -3.144em;"><span class="pstrut" style="height: 2.522em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"></span></span></span><span class="svg-align" style="top: -2.511em;"><span class="pstrut" style="height: 2.522em;"></span><span class="hide-tail" style="height: 0.522em; min-width: 1.469em;"><svg width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.011em;"><span class=""></span></span></span></span></span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord">1</span><span class="mord mathnormal" style="margin-right: 0.02778em;">D</span></span></span></span></span> mapping which is <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>∗</mo><mi>N</mi><mo>+</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">r*N+c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.46528em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.02778em;">r</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.76666em; vertical-align: -0.08333em;"></span><span class="mord mathnormal" style="margin-right: 0.10903em;">N</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">c</span></span></span></span></span></p>
+<p>So for island groups :</p>
+<pre><code>n = len(grid)
+dsu = DSU(n*n)
+direc = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+
+for r in range(n):
+  for c in range(n):
+    if grid[r][c]==1:
+      idx = r*n+c        
+      for dr, dc in direc:
+        nr = r+dr
+        nc = c+dc
+
+        if 0&lt;=nr&lt;n and 0&lt;=nc&lt;n and grid[nr][nc]==1:
+          newidx = nr*n+nc
+          dsu.union(idx, newidx)
+</code></pre>
+<p>Since we merged all islands into groups, we just need to check neighbours of all 0s and which group they belong to by checking the ultimate parent of each neighbour by <code>dsu.find(neighbourIndex)</code> and <code>neighbourindex = nr*n+nc</code></p>
+<pre><code>mxarea = 0
+haszero = False
+for i in range(n):
+    for j in range(n):
+        if grid[i][j]==0:
+            haszero=True
+            roots = set()
+            for dr, dc in direc:
+                nr = i+dr
+                nc = j+dc
+
+                if 0&lt;=nr&lt;n and 0&lt;=nc&lt;n and grid[nr][nc]==1:
+                    idx = nr*n+nc
+                    root = dsu.find(idx)
+                    roots.add(root)
+
+            size = 1
+            for r in roots:
+                size += dsu.size[r]
+            
+            mxarea = max(mxarea, size)
+</code></pre>
+<p>Then we just return :</p>
+<pre><code>if not haszero:
+  return n*n
+return mxarea if mxarea&gt;0 else 1
+</code></pre>
+<ul>
+<li><strong>Efficiency:</strong> With path compression, DSU operations are nearly <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>.</li>
+<li><strong>Real-world variants:</strong> If the problem was “Stream of incoming lands” (lands appearing dynamically), DSU is the <strong>only</strong> efficient solution. BFS would be too slow to re-run every time.</li>
+</ul>
+<p>When to use what ?</p>
+<ul>
+<li><strong>BFS/DFS (The Coloring Method):</strong> Generally preferred for this specific problem because it’s purely <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1.06411em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.814108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span> and intuitive. It shows you can manipulate grids.</li>
+<li><strong>DSU:</strong> Use this if you are very comfortable with it or if the interviewer asks “What if the land is added dynamically?”.</li>
+</ul>
 <h2 id="eulerian-path-problems">Eulerian path problems</h2>
 <p><strong>Pattern</strong> - <strong>Eulerian path (hierholzer’s algo) (Post-Order DFS)</strong></p>
 <ul>
