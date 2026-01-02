@@ -43,6 +43,13 @@ Imagine you are the Root. You have no idea what the answer is. You ask your chil
         return max(left_h, right_h) + 1 # Combine and pass UP
     ```
 
+## Some problems worth reading
+
+### Balanced Binary Tree
+![](https://assets.leetcode.com/uploads/2020/10/06/balance_2.jpg)
+
+As you can see the above tree is not balanced. 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1ODk3NDAxNiwxNTU1MTgxMDEwXX0=
+eyJoaXN0b3J5IjpbLTEyNjQyNzUyODMsMTg1ODk3NDAxNiwxNT
+U1MTgxMDEwXX0=
 -->
