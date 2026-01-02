@@ -54,8 +54,32 @@ Mental image:
 1. Think of smallest tree which is just of one node, the parent and ask what can I get from my children? Their respective heights. Then i can just calculate `abs(left-right)` and check if `abs(left-right) > 1` if yes then i must return `-1`
 2. I must check, did any of my children gave me `-1` ? That would mean they themselves are imbalanced ! If that's the case, how can me as a parent be balanced !? So parent returns `-1` himself.
 3. If everything goes right, we will keep calculating the height, and ultimately will return the maximum height from leaf to root node.
-4. Check if answer returned by the dfs `ans = dfs(root)` is actually $>=0$ if yes that means we do have some height, so return `True` else 
+4. Check if answer returned by the dfs `ans = dfs(root)` is actually $>=0$ if yes that means we do have some height, so return `True` else we have a negative value `-1` which says nothing was balanced, so return `False`
+
+Do it in code :
+Main logic is :
+```
+if left==-1 or right==-1: return -1
+if abs(left-right)>1: return -1
+```
+These 2 conditions, we c
+```
+def isBalanced(self, root: Optional[TreeNode]) -> bool:
+    def dfs(root):
+        if not root: return 0
+        
+        left = dfs(root.left)
+        right = dfs(root.right)
+        
+        if left==-1 or right==-1:
+            return -1
+        if abs(left-right)>1: return -1
+        return 1+max(left, right)
+   
+    d = dfs(root)
+    return True if d>=0 else False
+``` 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2ODI3MTQ0NSwxODU4OTc0MDE2LDE1NT
+eyJoaXN0b3J5IjpbMTQwMTQ3MzYwNCwxODU4OTc0MDE2LDE1NT
 UxODEwMTBdfQ==
 -->
