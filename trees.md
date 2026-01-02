@@ -80,30 +80,46 @@ def isBalanced(self, root: Optional[TreeNode]) -> bool:
 ``` 
 
 ### Is tree same?
-### Step 1: The Base Cases (The "Empty" Scenarios)
 
+ **Step 1: The Base Cases (The "Empty" Scenarios)**
 Before looking at values, look at "existence." There are three tiny scenarios:
 
-1.  **Both are missing:** If `P` is None and `Q` is None, they are identical. **Return `True`**.
-    
+1.  **Both are missing:** If `P` is None and `Q` is None, they are identical. **Return `True`**.    
 2.  **One is missing, one isn't:** If one is None but the other isn't, they are different. **Return `False`**.
-    
 
-### Step 2: The "Smallest Unit" Work (The Value Check)
-
+**Step 2: The "Smallest Unit" Work (The Value Check)**
 Now, assume both nodes exist. Look at their "faces" (their values).
-
 -   **Are the values different?** If `P.val != Q.val`, the trees are officially not the same. **Return `False`**.
-    
 
-### Step 3: The Recursive Leap of Faith (The Delegation)
-
+**Step 3: The Recursive Leap of Faith (The Delegation)**
 If the current nodes are identical, you now need to check their children. This is where you delegate the work.
-
 -   You ask your assistant: "Is the **left** side of P the same as the **left** side of Q?"
-    
 -   You ask again: "Is the **right** side of P the same as the **right** side of Q?"
+
+How to do it on code ?
+
+```
+class Solution:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        # 1. BASE CASE: Both are empty? Perfect match.
+        if not p and not q:
+            return True
+        
+        # 2. BASE CASE: 
+        #One is empty or values don't match? No match.
+        if not p or not q or p.val != q.val:
+            return False
+        
+        # 3. RECURSIVE STEP: "Delegate" the children
+        # "I've checked the root, 
+        # now you check the subtrees."
+        left_is_same = self.isSameTree(p.left, q.left)
+        right_is_same = self.isSameTree(p.right, q.right)
+        
+        # 4. COMBINE: Both sides must be True for the whole tree to be Same
+        return left_is_same and right_is_same
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0NTM3MTkzOSwxODU4OTc0MDE2LDE1NT
-UxODEwMTBdfQ==
+eyJoaXN0b3J5IjpbLTE3MDA1NDE5NzUsMTg1ODk3NDAxNiwxNT
+U1MTgxMDEwXX0=
 -->
