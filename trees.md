@@ -103,7 +103,10 @@ If the current nodes are identical, you now need to check their children. This i
 2.  Check if the values of the current nodes in both trees are equal. If not, return  `false`.
 3.  Recursively check the left subtree and then the right subtree of both trees.
 4.  If all recursive checks return  `true`, the trees are identical; otherwise, they are not.
-
+![Image 1](https://static.takeuforward.org/content/s1.png-rXFgoNo2)
+![Image 3](https://static.takeuforward.org/content/s3.png-o9HGyqio)
+![Image 4](https://static.takeuforward.org/content/s4.png-Fdef0e6V)
+![Image 5](https://static.takeuforward.org/content/s5.png-QJ-rwoVp)
 
 How to do it on code ?
 
@@ -131,6 +134,6 @@ def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3MDk1MzE0OCwtMTQ4OTkwODcwMCwxOD
+eyJoaXN0b3J5IjpbLTQ4MDA2NTUzNCwtMTQ4OTkwODcwMCwxOD
 U4OTc0MDE2LDE1NTUxODEwMTBdfQ==
 -->
