@@ -134,8 +134,10 @@ def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
  # for the whole tree to be Same
  return left_is_same and right_is_same
 ```
+### Subtree of another tree (using small helper functions to solve big problems)
 
-
+![](https://assets.leetcode.com/uploads/2021/04/28/subtree1-tree.jpg)
+Now as we can see in the fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM4MjMyMDEyOF19
+eyJoaXN0b3J5IjpbNjQ4MjMyNzYzLC0zODIzMjAxMjhdfQ==
 -->
