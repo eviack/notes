@@ -97,6 +97,13 @@ If the current nodes are identical, you now need to check their children. This i
 -   You ask your assistant: "Is the **left** side of P the same as the **left** side of Q?"
 -   You ask again: "Is the **right** side of P the same as the **right** side of Q?"
 
+**Algorithm:**
+
+1.  Start at the root node of both trees (node1 and node2).
+2.  Check if the values of the current nodes in both trees are equal. If not, return  `false`.
+3.  Recursively check the left subtree and then the right subtree of both trees.
+4.  If all recursive checks return  `true`, the trees are identical; otherwise, they are not.
+
 How to do it on code ?
 
 ```
@@ -123,6 +130,6 @@ def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0ODk5MDg3MDAsMTg1ODk3NDAxNiwxNT
-U1MTgxMDEwXX0=
+eyJoaXN0b3J5IjpbLTU4NTAwOTk3MCwtMTQ4OTkwODcwMCwxOD
+U4OTc0MDE2LDE1NTUxODEwMTBdfQ==
 -->
