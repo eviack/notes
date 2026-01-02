@@ -80,6 +80,7 @@ def isBalanced(self, root: Optional[TreeNode]) -> bool:
 ``` 
 
 ### Is tree same?
+![](https://imagedelivery.net/CLfkmk9Wzy8_9HRyug4EVA/e78fc10c-4692-471f-5261-61e9be4f3a00/public)
 
  **Step 1: The Base Cases (The "Empty" Scenarios)**
 Before looking at values, look at "existence." There are three tiny scenarios:
@@ -99,28 +100,29 @@ If the current nodes are identical, you now need to check their children. This i
 How to do it on code ?
 
 ```
-class Solution:
-    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        # 1. BASE CASE: Both are empty? Perfect match.
-        if not p and not q:
-            return True
-        
-        # 2. BASE CASE: 
-        #One is empty or values don't match? No match.
-        if not p or not q or p.val != q.val:
-            return False
-        
-        # 3. RECURSIVE STEP: "Delegate" the children
-        # "I've checked the root, 
-        # now you check the subtrees."
-        left_is_same = self.isSameTree(p.left, q.left)
-        right_is_same = self.isSameTree(p.right, q.right)
-        
-        # 4. COMBINE: Both sides must be True 
-        # for the whole tree to be Same
-        return left_is_same and right_is_same
+def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+ # 1. BASE CASE: Both are empty? Perfect match.
+ if not p and not q:
+     return True
+ 
+ # 2. BASE CASE: 
+ #One is empty or values don't match? No match.
+ if not p or not q or p.val != q.val:
+     return False
+ 
+ # 3. RECURSIVE STEP: "Delegate" the children
+ # "I've checked the root, 
+ # now you check the subtrees."
+ left_is_same = self.isSameTree(p.left, q.left)
+ right_is_same = self.isSameTree(p.right, q.right)
+ 
+ # 4. COMBINE: Both sides must be True 
+ # for the whole tree to be Same
+ return left_is_same and right_is_same
 ```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI4NTU2NTIwLDE4NTg5NzQwMTYsMTU1NT
-E4MTAxMF19
+eyJoaXN0b3J5IjpbLTE0ODk5MDg3MDAsMTg1ODk3NDAxNiwxNT
+U1MTgxMDEwXX0=
 -->
