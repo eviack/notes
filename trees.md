@@ -116,10 +116,11 @@ class Solution:
         left_is_same = self.isSameTree(p.left, q.left)
         right_is_same = self.isSameTree(p.right, q.right)
         
-        # 4. COMBINE: Both sides must be True for the whole tree to be Same
+        # 4. COMBINE: Both sides must be True 
+        # for the whole tree to be Same
         return left_is_same and right_is_same
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MDA1NDE5NzUsMTg1ODk3NDAxNiwxNT
-U1MTgxMDEwXX0=
+eyJoaXN0b3J5IjpbLTI4NTU2NTIwLDE4NTg5NzQwMTYsMTU1NT
+E4MTAxMF19
 -->
