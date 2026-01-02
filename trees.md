@@ -137,7 +137,11 @@ def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
 ### Subtree of another tree (using small helper functions to solve big problems)
 
 ![](https://assets.leetcode.com/uploads/2021/04/28/subtree1-tree.jpg)
-Now as we can see in the fi
+Now as we can see in the figure, we found subroot inside our main tree, so why not just search the whole tree ? Just assume we go at each node in the main tree, and **compare subRoot tree with the tree below root.**
+
+Each node in main tree will act as a parent of a subtree inside it, and then we will check `dfs(root.
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQ4MjMyNzYzLC0zODIzMjAxMjhdfQ==
+eyJoaXN0b3J5IjpbMTM3MjgyNTY2MiwtMzgyMzIwMTI4XX0=
 -->
