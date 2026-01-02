@@ -56,13 +56,12 @@ Mental image:
 3. If everything goes right, we will keep calculating the height, and ultimately will return the maximum height from leaf to root node.
 4. Check if answer returned by the dfs `ans = dfs(root)` is actually $>=0$ if yes that means we do have some height, so return `True` else we have a negative value `-1` which says nothing was balanced, so return `False`
 
-Do it in code :
 Main logic is :
 ```
 if left==-1 or right==-1: return -1
 if abs(left-right)>1: return -1
 ```
-These 2 conditions, we c
+These 2 conditions, we check while calculating the height of tree, check full code below:
 ```
 def isBalanced(self, root: Optional[TreeNode]) -> bool:
     def dfs(root):
@@ -79,7 +78,9 @@ def isBalanced(self, root: Optional[TreeNode]) -> bool:
     d = dfs(root)
     return True if d>=0 else False
 ``` 
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQwMTQ3MzYwNCwxODU4OTc0MDE2LDE1NT
-UxODEwMTBdfQ==
+eyJoaXN0b3J5IjpbLTIwNzI4ODkzNTksMTg1ODk3NDAxNiwxNT
+U1MTgxMDEwXX0=
 -->
