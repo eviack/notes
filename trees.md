@@ -48,8 +48,11 @@ Imagine you are the Root. You have no idea what the answer is. You ask your chil
 ### Balanced Binary Tree
 ![](https://assets.leetcode.com/uploads/2020/10/06/balance_2.jpg)
 
-As you can see the above tree is not balanced. A tree is balanced if the $|h_{left} - h_{right}|$<=1 if greater it is not balanced so we can just return $-1$ also if any of left subtree and right subtree gives -1 
+As you can see the above tree is not balanced. A tree is balanced if the $|h_{left} - h_{right}|$<=1 if greater it is not balanced so we can just return $-1$ also if any of left subtree and right subtree gives -1 to parent that means parent is unbalanced !
+
+Mental image:
+1. Think of smallest tree which is just of one node, the parent and ask what can I get from my children? Their respective heights. Then i can just calculate `abs(left-right
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEzMDcwODc1OCwxODU4OTc0MDE2LDE1NT
-UxODEwMTBdfQ==
+eyJoaXN0b3J5IjpbLTEwMTAyODUwNzMsMTg1ODk3NDAxNiwxNT
+U1MTgxMDEwXX0=
 -->
