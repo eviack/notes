@@ -51,8 +51,10 @@ Imagine you are the Root. You have no idea what the answer is. You ask your chil
 As you can see the above tree is not balanced. A tree is balanced if the $|h_{left} - h_{right}|$<=1 if greater it is not balanced so we can just return $-1$ also if any of left subtree and right subtree gives -1 to parent that means parent is unbalanced !
 
 Mental image:
-1. Think of smallest tree which is just of one node, the parent and ask what can I get from my children? Their respective heights. Then i can just calculate `abs(left-right
+1. Think of smallest tree which is just of one node, the parent and ask what can I get from my children? Their respective heights. Then i can just calculate `abs(left-right)` and check if `abs(left-right) > 1` if yes then i must return `-1`
+2. I must check, did any of my children gave me `-1` ? That would mean they themselves are imbalanced ! If that's the case, how can me as a parent be balanced !? So parent returns `-1` himself.
+3. If everything goes right, we will keep calculating the height, and ultima 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMTAyODUwNzMsMTg1ODk3NDAxNiwxNT
-U1MTgxMDEwXX0=
+eyJoaXN0b3J5IjpbMTY5MzkyMTg3MCwxODU4OTc0MDE2LDE1NT
+UxODEwMTBdfQ==
 -->
